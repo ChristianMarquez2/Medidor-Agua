@@ -1,0 +1,7 @@
+{
+  "name": "MedidorAgua",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
