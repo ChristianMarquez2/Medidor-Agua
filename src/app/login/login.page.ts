@@ -15,6 +15,9 @@ import {
   AlertController,
 } from '@ionic/angular/standalone';
 
+import { StatusBar, Style } from '@capacitor/status-bar';
+import { Platform } from '@ionic/angular/standalone'; // Para verificar la plataforma
+
 import { SupabaseService } from '../services/supabase.service';
 
 @Component({
@@ -45,7 +48,9 @@ export class LoginPage implements OnInit {
     private supabase: SupabaseService,
     private router: Router,
     private toastController: ToastController,
-    private alertController: AlertController // <-- Asegúrate de tener esto
+    private alertController: AlertController, // <-- Asegúrate de tener esto
+    private platform: Platform // <-- ¡NUEVO! Inyecta Platform
+
   ) {}
 
   ngOnInit() {}
@@ -66,6 +71,13 @@ export class LoginPage implements OnInit {
       return;
     }
 
+    if (this.platform.is('capacitor')) {
+      try {
+        await StatusBar.hide();
+      } catch (e) {
+        console.error('Error al ocultar StatusBar', e);
+      }
+    }
     // Ya NO necesitamos revisar el rol aquí.
     // El guard y la página de tabs se encargarán.
 

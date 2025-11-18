@@ -12,6 +12,9 @@ import {
   IonLabel,
   IonIcon,
 } from '@ionic/angular/standalone';
+
+import { StatusBar } from '@capacitor/status-bar';
+import { Platform } from '@ionic/angular/standalone';
 import { SupabaseService } from '../services/supabase.service';
 import { addIcons } from 'ionicons';
 import { logOutOutline, personCircleOutline } from 'ionicons/icons';
@@ -39,7 +42,8 @@ export class PerfilPage implements OnInit {
 
   constructor(
     private supabaseService: SupabaseService,
-    private router: Router
+    private router: Router,
+    private platform: Platform
   ) {
     addIcons({ logOutOutline, personCircleOutline });
   }
@@ -50,6 +54,14 @@ export class PerfilPage implements OnInit {
   }
 
   async signOut() {
+
+    if (this.platform.is('capacitor')) {
+      try {
+        await StatusBar.show();
+      } catch (e) {
+        console.error('Error al mostrar StatusBar', e);
+      }
+    }
     await this.supabaseService.signOut();
     // Redirige al login y limpia el historial
     this.router.navigate(['/login'], { replaceUrl: true });

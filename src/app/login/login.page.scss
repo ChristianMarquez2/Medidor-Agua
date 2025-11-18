@@ -5,41 +5,41 @@ $color-light: #FFFFFF;
 $color-gray: #E0E0E0;
 $color-light-gray-bg: #f7f9fa;
 
+// Fondo de la pantalla de login
 .login-bg {
-  --background: linear-gradient(160deg, $color-primary 0%, $color-secondary 100%);
+  // Usamos el gradiente que especificaste
+  --background: linear-gradient(to bottom, #4facfe, #00f2fe);
+  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
+// Contenedor principal del login
 .login-container {
+  background: #ffffff; /* Fondo blanco */
+  border-radius: 16px; // Redondeado como en tu SCSS anterior
+  padding: 2.5rem 2rem;
   width: 90%;
   max-width: 400px;
-  background: $color-light;
-  padding: 2.5rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra como en tu SCSS anterior */
   text-align: center;
+}
 
-  .login-icon {
-    display: block;
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 1.5rem;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 4px solid $color-light;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
+// Icono de login (imagen circular)
+.login-icon {
+  width: 90px; // Tamaño de tu SCSS anterior
+  height: 90px;
+  margin: 0 auto 1.5rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: 4px solid $color-light; // Borde de tu SCSS anterior
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); // Sombra de tu SCSS anterior
 }
 
 h2 {
-  color: $color-primary;
+  color: $color-primary; // Ahora este color SÍ se aplicará
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
@@ -74,10 +74,11 @@ ion-input {
   color: $color-dark;
 }
 
+
 ion-button[expand="block"] {
-  --background: $color-primary;
-  --background-activated: darken($color-primary, 10%);
-  --background-focused: darken($color-primary, 5%);
+  --background: $color-primary;            // Azul principal
+  --background-activated: #00497a;         // Azul más oscuro al presionar
+  --background-focused: #005288;           // Azul ligeramente más oscuro al enfocar
   --border-radius: 8px;
   --box-shadow: 0 4px 15px rgba(0, 90, 156, 0.3);
   --padding-top: 1.2rem;
@@ -91,13 +92,15 @@ ion-button[expand="block"] {
   margin-right: 0;
 
   ion-spinner {
-    color: $color-light;
+    color: $color-light;                   // Spinner blanco
   }
 }
 
+
+// Botón de registro
 ion-button[fill="outline"] {
-  --border-color: $color-primary;
-  --color: $color-primary;
+  --border-color: #{$color-primary}; // CORREGIDO: Usa tu variable
+  --color: #{$color-primary}; // CORREGIDO: Usa tu variable
   --border-radius: 8px;
   --background-activated: rgba($color-primary, 0.1);
   height: 50px;
@@ -107,25 +110,14 @@ ion-button[fill="outline"] {
   margin-right: 0;
 }
 
+//olvide mi contraseña
 ion-button[fill="clear"] {
-  color: $color-dark;
+  color: $color-dark; // CORREGIDO: Usa tu variable (o $color-primary si lo prefieres azul)
+  font-size: 14px;
   opacity: 0.7;
   text-transform: none;
-  font-weight: 500;
   --background-hover: transparent;
   --background-activated: transparent;
 }
 
-.loading {
-  margin-top: 20px;
-  text-align: center;
-
-  p {
-    color: $color-dark;
-    font-size: 0.9rem;
-  }
-
-  ion-spinner {
-    color: $color-primary;
-  }
-}
+// Se eliminó la clase .loading porque ya no se usa en el HTML

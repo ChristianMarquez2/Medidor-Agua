@@ -1,23 +1,11 @@
-<!-- 
-  ¡AQUÍ ESTÁ LA CORRECCIÓN!
-  La clase 'login-bg' se aplica directamente a ion-content.
--->
-<ion-content class="login-bg">
-  <!-- 
-    Este div ya no necesita 'login-bg',
-    solo 'login-container'
-  -->
+<ion-content class="login-bg" [fullscreen]="true">
   <div class="login-container">
-    <!-- 
-      ¡AÑADIDO!
-      Un div para usar tu estilo .login-icon que ya tenías
-    -->
     <div
       class="login-icon"
       style="background-image: url('https://img.freepik.com/vector-gratis/gotas-agua-anillos-salpicaduras_78370-7491.jpg?semt=ais_hybrid&w=740&q=80')"
     ></div>
 
-    <h2>Ingreso</h2>
+    <h2 style="color: #007bff; font-weight: bold;">Ingreso</h2>
 
     <ion-list>
       <ion-item>
@@ -45,7 +33,6 @@
       Iniciar sesión
     </ion-button>
 
-    <!-- --- BOTONES NUEVOS AÑADIDOS --- -->
     <ion-button
       expand="block"
       fill="outline"
@@ -58,11 +45,5 @@
     <ion-button fill="clear" (click)="forgotPassword()" class="ion-margin-top">
       Olvidé mi contraseña
     </ion-button>
-    <!-- --- FIN DE BOTONES NUEVOS --- -->
-
-    <!-- 
-      Eliminado el 'div.loading' separado.
-      El spinner ahora se muestra DENTRO del botón de Iniciar Sesión.
-    -->
   </div>
 </ion-content>
