@@ -1,0 +1,99 @@
+/*
+  ========================================
+  SCSS para la Barra de Pestañas (Tabs)
+  Tema: Agua Potable (Profesional/Limpio)
+  ========================================
+*/
+
+/* --- Variables de Color (Tema Agua) --- */
+$color-primary: #005A9C; // Azul principal
+$color-light: #FFFFFF; // Blanco
+$color-gray-icon: #888888; // Gris para íconos inactivos
+
+/* --- 1. La Barra de Pestañas (ion-tab-bar) --- */
+ion-tab-bar {
+  --background: $color-light;
+  border-top: none; // Quitamos la línea de borde superior
+  
+  // Añadimos una sombra profesional para que "flote"
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+
+  // Padding para áreas seguras (iPhone X y similares)
+  padding-bottom: env(safe-area-inset-bottom);
+  height: 60px; // Una altura estándar
+}
+
+/* --- 2. Botones de Pestaña (Normales) --- */
+ion-tab-button {
+  --color: $color-gray-icon; // Color de ícono/texto inactivo
+  --color-selected: $color-primary; // Color de ícono/texto activo
+  
+  --padding-top: 0.25rem;
+  --padding-bottom: 0.25rem;
+  
+  // Efecto "ripple" (ondulación al pulsar) de color primario
+  --ripple-color: $color-primary;
+
+  // Añadimos un borde superior que será invisible...
+  border-top: 3px solid transparent;
+  
+  // Transición suave
+  transition: all 0.2s ease-in-out;
+
+  ion-label {
+    font-size: 0.75rem; // Letra un poco más pequeña
+    font-weight: 500;
+  }
+
+  /* ...hasta que el botón esté seleccionado! */
+  &.tab-selected {
+    border-top: 3px solid $color-primary;
+    
+    ion-label {
+      font-weight: 700; // Hacemos el texto negrita
+    }
+  }
+}
+
+
+/* --- 3. ¡LA MAGIA! Estilo del Botón "Registrar" (FAB) --- */
+ion-tab-button[tab="registro-lectura"] {
+  // Le damos el fondo azul principal y el ícono blanco
+  --background: $color-primary;
+  --color: $color-light;
+  --color-selected: $color-light; // El ícono se queda blanco
+
+  // Lo hacemos circular
+  --border-radius: 50%;
+  border-radius: 50%;
+
+  // Lo "levantamos" para que flote
+  margin-top: -20px;
+  
+  // Sombra profesional
+  box-shadow: 0 4px 15px rgba(0, 90, 156, 0.3);
+
+  // Le damos un tamaño fijo
+  width: 56px;
+  height: 56px;
+  max-width: 56px; // Forzamos el tamaño
+
+  // Quitamos el borde superior
+  border-top: none;
+
+  // Ocultamos la etiqueta "Registrar"
+  ion-label {
+    display: none;
+  }
+
+  // Hacemos el ícono de "+" más grande
+  ion-icon {
+    font-size: 1.8rem;
+  }
+
+  /* Cuando está seleccionado, no queremos que cambie */
+  &.tab-selected {
+    border-top: none;
+    --color: $color-light;
+  }
+}

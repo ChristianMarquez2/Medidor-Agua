@@ -1,0 +1,101 @@
+/*
+  ========================================
+  SCSS para la página de Perfil de Usuario
+  Tema: Agua Potable (Profesional/Limpio)
+  ========================================
+*/
+
+/* --- Variables de Color (Tema Agua) --- */
+$color-primary: #005A9C; // Azul principal (corporativo)
+$color-dark: #222222; // Negro (para texto)
+$color-light: #FFFFFF; // Blanco (para tarjetas)
+$color-light-gray-bg: #f7f9fa; // Fondo de página (muy sutil)
+$color-gray-text: #666666;
+
+/* --- 1. Cabecera (Header) --- */
+ion-header {
+  // Sombra sutil en la cabecera
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  ion-toolbar {
+    --background: $color-primary;
+    --color: $color-light; // Color del texto del título
+  }
+
+  ion-title {
+    font-weight: 600;
+  }
+}
+
+/* --- 2. Fondo del Contenido --- */
+ion-content {
+  // Usamos un fondo gris claro para que la tarjeta resalte
+  --background: $color-light-gray-bg;
+}
+
+/* --- 3. Contenedor Principal --- */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Centra todo verticalmente
+  align-items: center; // Centra todo horizontalmente
+  height: 100%; // Ocupa toda la altura del ion-content
+  padding: 0 1.5rem; // Padding lateral
+}
+
+/* --- 4. Icono de Perfil --- */
+.profile-icon {
+  font-size: 120px; // Icono bien grande
+  color: $color-primary;
+  margin-bottom: 1.5rem;
+  line-height: 1; // Ajuste para alineación
+}
+
+/* --- 5. Tarjeta de Información de Usuario --- */
+ion-list[inset="true"] {
+  width: 100%;
+  max-width: 400px; // Límite para pantallas grandes
+  margin-bottom: 1.5rem;
+  background: $color-light;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Sombra suave
+  border-radius: 16px; // Más redondeado que el default
+
+  ion-item {
+    --background: transparent;
+    text-align: center; // Centramos el texto
+
+    p {
+      font-size: 0.8rem;
+      color: $color-gray-text;
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: $color-dark;
+      font-weight: 600;
+    }
+  }
+}
+
+/* --- 6. Botón de Cerrar Sesión --- */
+ion-button[color="danger"] {
+  // Hacemos que el botón rojo tenga el mismo estilo profesional
+  --border-radius: 8px;
+  // Sombra roja sutil
+  --box-shadow: 0 4px 15px rgba(235, 68, 90, 0.3);
+  --padding-top: 1.2rem;
+  --padding-bottom: 1.2rem;
+
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 50px;
+
+  width: 100%; // Ancho completo (del padding del container)
+  max-width: 400px; // Que coincida con la tarjeta de info
+  margin: 0;
+}

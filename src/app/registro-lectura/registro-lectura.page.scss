@@ -1,0 +1,157 @@
+/*
+  ========================================
+  SCSS para la página de Registrar Lectura
+  Tema: Agua Potable (Profesional/Limpio)
+  ========================================
+*/
+
+/* --- Variables de Color (Tema Agua) --- */
+$color-primary: #005A9C; // Azul principal
+$color-light: #FFFFFF; // Blanco
+$color-dark: #222222; // Negro (para texto)
+$color-light-gray-bg: #f7f9fa; // Fondo de página
+$color-gray-border: #e0e0e0;
+$color-success: #2dd36f; // Verde de Ionic
+
+/* --- 1. Cabecera (Header) --- */
+ion-header {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  ion-toolbar {
+    --background: $color-primary;
+    --color: $color-light;
+  }
+
+  ion-title {
+    font-weight: 600;
+  }
+
+  /* Estilo para el botón de "atrás" */
+  ion-back-button {
+    --color: $color-light;
+  }
+}
+
+/* --- 2. Fondo del Contenido --- */
+ion-content {
+  // Usamos un fondo gris claro para que las tarjetas resalten
+  --background: $color-light-gray-bg;
+}
+
+/* --- 3. Contenedor del Formulario --- */
+/*
+  IMPORTANTE: En tu HTML, envuelve todo el contenido
+  dentro de <ion-content> con un div:
+  <div class="form-container">
+    <ion-list>...</ion-list>
+    <ion-button>...</ion-button>
+  </div>
+*/
+.form-container {
+  padding: 1rem; // Añade espacio a los lados
+}
+
+/* --- 4. Estilo de Inputs (igual que en Login) --- */
+ion-list {
+  background: transparent;
+  --ion-background-color: transparent;
+  padding: 0;
+  margin-bottom: 1rem; // Espacio entre inputs y botones
+}
+
+ion-item {
+  --background: $color-light; // Fondo blanco para el item
+  --border-radius: 8px;
+  --padding-start: 1rem;
+  --highlight-color-focused: $color-primary; // Línea azul al seleccionar
+  --border-color: transparent; // Sin borde inferior por defecto
+  --inner-padding-bottom: 0.75rem;
+  --inner-padding-top: 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); // Sombra muy sutil
+}
+
+ion-label[position="floating"] {
+  color: $color-primary;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* --- 5. Estilo de Botones --- */
+ion-button {
+  // Estilo base para TODOS los botones
+  --border-radius: 8px;
+  --padding-top: 1.2rem;
+  --padding-bottom: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 50px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0.75rem; // Espacio entre botones
+}
+
+/* Botones de Foto (outline) */
+ion-button[fill="outline"] {
+  --border-color: $color-primary;
+  --color: $color-primary;
+  --background-activated: rgba($color-primary, 0.1);
+  --box-shadow: none; // Sin sombra para botones outline
+}
+
+/* Botón de GPS (sólido, azul) */
+ion-button[fill="solid"] {
+  --background: $color-primary;
+  --background-activated: darken($color-primary, 10%);
+  --box-shadow: 0 4px 15px rgba(0, 90, 156, 0.3); // Sombra azul
+}
+
+/* Botón de Guardar (sólido, verde) */
+/*
+  IMPORTANTE: En tu HTML, añade color="success"
+  al botón "Guardar Lectura":
+  <ion-button color="success" ...>
+    GUARDAR LECTURA
+  </ion-button>
+*/
+ion-button[color="success"] {
+  --background: $color-success;
+  --background-activated: darken($color-success, 10%);
+  --box-shadow: 0 4px 15px rgba(45, 211, 111, 0.3); // Sombra verde
+
+  /* ¡NUEVO! Asegurar que el spinner sea blanco */
+  ion-spinner {
+    color: $color-light;
+  }
+}
+
+/* --- 6. Nuevos Estilos para Vistas Previas y GPS --- */
+
+/* Estilo para la vista previa de la imagen */
+img.preview {
+  width: 100%;
+  aspect-ratio: 16 / 9; // Proporción para evitar distorsión
+  object-fit: cover; // Rellena el espacio sin estirar
+  border-radius: 8px; // Bordes redondeados
+  border: 1px solid $color-gray-border;
+  margin-top: 0.75rem; // Espacio después del botón
+  margin-bottom: 1rem; // Espacio antes del siguiente elemento
+}
+
+/* Estilo para el texto de coordenadas GPS */
+.gps-coords {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+
+  ion-icon {
+    font-size: 1.1rem; // Icono de check un poco más grande
+    margin-right: 0.5rem;
+  }
+}

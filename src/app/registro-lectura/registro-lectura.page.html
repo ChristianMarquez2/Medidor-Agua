@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- ¡NUEVO! Botón para volver al home (o a mis-lecturas) -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/mis-lecturas"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar Lectura</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="form-container">
+    <!-- Usamos IonList e IonItem para un formulario estilo nativo -->
+    <ion-list>
+      <!-- CAMPO VALOR -->
+      <ion-item>
+        <ion-label position="floating">Valor del medidor</ion-label>
+        <ion-input
+          [(ngModel)]="valor"
+          type="number"
+          inputmode="numeric"
+          placeholder="Ej: 12345"
+        ></ion-input>
+      </ion-item>
+
+      <!-- ¡NUEVO! CAMPO OBSERVACIONES -->
+      <ion-item>
+        <ion-label position="floating">Observaciones (Opcional)</ion-label>
+        <ion-textarea
+          [(ngModel)]="observaciones"
+          [autoGrow]="true"
+          placeholder="Ej: Medidor en mal estado"
+        ></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <!-- FOTOS -->
+    <div class="photo-section">
+      <!-- Foto medidor -->
+      <ion-button
+        expand="block"
+        fill="outline"
+        (click)="tomarFoto('medidor')"
+        class="ion-margin-top"
+      >
+        <ion-icon name="camera" slot="start"></ion-icon>
+        Tomar foto del medidor
+      </ion-button>
+      <img
+        *ngIf="fotoMedidorPreview"
+        [src]="fotoMedidorPreview"
+        class="preview"
+      />
+
+      <!-- Foto fachada -->
+      <ion-button
+        expand="block"
+        fill="outline"
+        (click)="tomarFoto('fachada')"
+        class="ion-margin-top"
+      >
+        <ion-icon name="image" slot="start"></ion-icon>
+        Tomar foto de la fachada
+      </ion-button>
+      <img
+        *ngIf="fotoFachadaPreview"
+        [src]="fotoFachadaPreview"
+        class="preview"
+      />
+    </div>
+
+    <!-- GPS -->
+    <ion-button expand="block" (click)="obtenerGPS()" class="ion-margin-top">
+      <ion-icon name="location" slot="start"></ion-icon>
+      Obtener Ubicación GPS
+    </ion-button>
+    <!-- Mostramos la ubicación con un ícono -->
+    <p *ngIf="latitud" class="gps-coords">
+      <ion-icon name="checkmark-circle" color="success"></ion-icon>
+      Lat: {{latitud | number: '1.4-4'}}, Lng: {{longitud | number: '1.4-4'}}
+    </p>
+
+    <!-- BOTÓN DE GUARDAR (Mejorado) -->
+    <ion-button
+      expand="block"
+      color="success"
+      [disabled]="loading"
+      (click)="registrarLectura()"
+      class="ion-margin-vertical"
+    >
+      <ion-spinner *ngIf="loading" slot="start"></ion-spinner>
+      Guardar lectura
+    </ion-button>
+  </div>
+</ion-content>

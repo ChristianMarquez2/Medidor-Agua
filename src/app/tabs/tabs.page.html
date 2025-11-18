@@ -1,0 +1,42 @@
+<!-- 
+  Este componente no muestra contenido, solo la barra de pestañas.
+  El contenido de la página se renderiza en <ion-router-outlet>.
+-->
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <!-- Pestañas para el ROL MEDIDOR -->
+    <ion-tab-button
+      *ngIf="isMedidor"
+      tab="mis-lecturas"
+      href="/tabs/mis-lecturas"
+    >
+      <ion-icon name="list"></ion-icon>
+      <ion-label>Mis Lecturas</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button
+      *ngIf="isMedidor"
+      tab="registro-lectura"
+      href="/tabs/registro-lectura"
+    >
+      <ion-icon name="add"></ion-icon>
+      <ion-label>Registrar</ion-label>
+    </ion-tab-button>
+
+    <!-- Pestañas para el ROL ADMIN -->
+    <ion-tab-button
+      *ngIf="isAdmin"
+      tab="admin-registros"
+      href="/tabs/admin-registros"
+    >
+      <ion-icon name="shield"></ion-icon>
+      <ion-label>Admin</ion-label>
+    </ion-tab-button>
+
+    <!-- Pestaña de Perfil (Común para todos) -->
+    <ion-tab-button tab="perfil" href="/tabs/perfil">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

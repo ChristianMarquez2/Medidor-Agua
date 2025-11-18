@@ -35,3 +35,21 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+/*
+========================================
+ Fondo de Página de Login (GLOBAL)
+========================================
+Movimos esta regla aquí desde login.page.scss
+para solucionar el problema de encapsulación de estilos.
+Ahora, cualquier elemento con la clase .login-bg
+(como tu ion-content) usará este fondo.
+*/
+.login-bg {
+  --background: linear-gradient(
+    160deg,
+    #005A9C 0%, /* $color-primary */
+    #4DB8FF 100% /* $color-secondary */
+  );
+}

@@ -1,0 +1,167 @@
+/*
+  ========================================
+  SCSS para la página de Login (Ionic)
+  Tema: Agua Potable
+  Colores: Azul, Celeste, Negro, Blanco
+  ========================================
+*/
+
+/* --- Variables de Color (Tema Agua) --- */
+$color-primary: #005A9C; // Azul principal (profesional, corporativo)
+$color-secondary: #4DB8FF; // Celeste (agua, frescura)
+$color-dark: #222222; // Negro (para texto, más suave que #000)
+$color-light: #FFFFFF; // Blanco (para tarjetas y texto)
+$color-gray: #E0E0E0; // Gris claro (para bordes sutiles)
+$color-light-gray-bg: #f7f9fa; // Fondo para inputs
+
+/* --- 1. Fondo de la Página (El degradado) --- */
+.login-bg {
+  /* Usamos un degradado lineal sutil que va del azul principal
+    a un celeste, evocando la claridad del agua.
+  */
+  --background: linear-gradient(
+    160deg,
+    $color-primary 0%,
+    $color-secondary 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Centra el contenido verticalmente
+  align-items: center; // Centra el contenido horizontalmente
+  height: 100%;
+}
+
+/* --- 2. Contenedor del Formulario (La "Tarjeta") --- */
+.login-container {
+  width: 90%;
+  max-width: 400px; // Límite para pantallas grandes (tablets/web)
+  background: $color-light;
+  padding: 2.5rem 2rem;
+  border-radius: 16px; // Esquinas redondeadas modernas
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); // Sombra profesional
+  text-align: center;
+
+  /* *** ¡IMPORTANTE! ***
+    Añade este div en tu HTML, justo antes del <h2>
+    para que aparezca tu logo/icono.
+    
+    <div class="login-icon"></div>
+    <h2>Ingreso</h2>
+  */
+  .login-icon {
+    display: block;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 1.5rem;
+    // ¡DESCOMENTA Y USA TU IMAGEN AQUÍ!
+    // background-image: url('/assets/icon/mi-logo-agua.png');
+    background-color: #f0f0f0; // Color de fondo mientras no hay imagen
+    border-radius: 50%; // Circular, si tu logo es redondo
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 4px solid $color-light;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* --- 3. Título ("Ingreso") --- */
+h2 {
+  color: $color-primary;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* --- 4. Estilo de Inputs y Labels --- */
+ion-list {
+  background: transparent;
+  --ion-background-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+ion-item {
+  --background: $color-light-gray-bg;
+  --border-radius: 8px;
+  --padding-start: 1rem;
+  --highlight-color-focused: $color-primary; // Línea azul al seleccionar
+  --border-color: transparent; // Sin borde inferior por defecto
+  --inner-padding-bottom: 0.75rem;
+  --inner-padding-top: 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); // Sombra muy sutil
+}
+
+ion-label[position="floating"] {
+  color: $color-primary;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+ion-input {
+  color: $color-dark;
+}
+
+/* --- 5. Botones --- */
+
+/* Botón Principal (Iniciar Sesión) */
+ion-button[expand="block"] {
+  --background: $color-primary;
+  --background-activated: darken($color-primary, 10%);
+  --background-focused: darken($color-primary, 5%);
+  --border-radius: 8px;
+  --box-shadow: 0 4px 15px rgba(0, 90, 156, 0.3); // Sombra del color del botón
+  --padding-top: 1.2rem;
+  --padding-bottom: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 50px;
+  margin-top: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+
+  ion-spinner {
+    color: $color-light; // Spinner blanco
+  }
+}
+
+/* Botón Secundario (Registrarse) */
+ion-button[fill="outline"] {
+  --border-color: $color-primary;
+  --color: $color-primary;
+  --border-radius: 8px;
+  --background-activated: rgba($color-primary, 0.1); // Efecto sutil al pulsar
+  height: 50px;
+  font-weight: 600;
+  text-transform: none; // Más amigable que mayúsculas
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Botón Terciario (Olvidé contraseña) */
+ion-button[fill="clear"] {
+  color: $color-dark;
+  opacity: 0.7;
+  text-transform: none;
+  font-weight: 500;
+  --background-hover: transparent;
+  --background-activated: transparent;
+}
+
+/* --- 6. Estado de Carga (Opcional) --- */
+/* Este es el .loading que tenías al final del HTML.
+  Si lo usas, se verá así.
+*/
+.loading {
+  margin-top: 20px;
+  text-align: center;
+  p {
+    color: $color-dark;
+    font-size: 0.9rem;
+  }
+  ion-spinner {
+    color: $color-primary;
+  }
+}

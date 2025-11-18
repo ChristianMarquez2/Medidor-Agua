@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Lecturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="loading" class="center">
+    <p>Cargando lecturas...</p>
+  </div>
+
+  <div *ngIf="!loading && lecturas.length === 0" class="center">
+    <p>No tienes lecturas registradas aún.</p>
+  </div>
+
+  <ion-list *ngIf="lecturas.length > 0">
+    <ion-item *ngFor="let lectura of lecturas">
+      <ion-label>
+        <h2>Valor: {{ lectura.valor }}</h2>
+        <p>Registrado: {{ lectura.fecha_registro | date:'short' }}</p>
+        <p (click)="abrirMapa(lectura.latitud, lectura.longitud)"
+           style="color:#3880ff; cursor:pointer;">
+          Ver ubicación en Google Maps
+        </p>
+      </ion-label>
+    </ion-item>
+
+    <div class="images">
+      <ion-img 
+        *ngFor="let lectura of lecturas" 
+        [src]="lectura.foto_medidor">
+      </ion-img>
+
+      <ion-img 
+        *ngFor="let lectura of lecturas" 
+        [src]="lectura.foto_fachada">
+      </ion-img>
+    </div>
+
+  </ion-list>
+
+</ion-content>

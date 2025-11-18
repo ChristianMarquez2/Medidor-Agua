@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registros de Medidores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="center" *ngIf="loading">
+    <p>Cargando registros...</p>
+  </div>
+
+  <div class="center" *ngIf="!loading && registros.length === 0">
+    <p>No existen lecturas registradas.</p>
+  </div>
+
+  <ion-list *ngIf="registros.length > 0">
+    <ion-item *ngFor="let reg of registros">
+
+      <ion-label>
+        <h2><b>Usuario:</b> {{ reg.usuario_id }}</h2>
+        <p><b>Valor:</b> {{ reg.valor }}</p>
+        <p><b>Obs:</b> {{ reg.observacion }}</p>
+        <p><b>Fecha:</b> {{ reg.fecha_registro | date:'short' }}</p>
+
+        <p style="color:#3880ff; cursor:pointer;"
+           (click)="abrirMapa(reg.latitud, reg.longitud)">
+          Ver ubicación en Google Maps
+        </p>
+
+        <div class="images">
+          <ion-img *ngIf="reg.foto_medidor" [src]="reg.foto_medidor"></ion-img>
+          <ion-img *ngIf="reg.foto_fachada" [src]="reg.foto_fachada"></ion-img>
+        </div>
+
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>

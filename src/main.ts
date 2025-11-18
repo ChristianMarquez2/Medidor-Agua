@@ -2,8 +2,14 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { RouteReuseStrategy, provideRouter, withPreloading, PreloadAllModules } from '@angular/router';
 import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 
+// ¡NUEVO! Importa el loader de PWA Elements
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+
+// ¡NUEVO! Llama al loader antes de iniciar la app
+defineCustomElements(window);
 
 bootstrapApplication(AppComponent, {
   providers: [

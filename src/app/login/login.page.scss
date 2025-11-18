@@ -1,0 +1,131 @@
+$color-primary: #005A9C;
+$color-secondary: #4DB8FF;
+$color-dark: #222222;
+$color-light: #FFFFFF;
+$color-gray: #E0E0E0;
+$color-light-gray-bg: #f7f9fa;
+
+.login-bg {
+  --background: linear-gradient(160deg, $color-primary 0%, $color-secondary 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-container {
+  width: 90%;
+  max-width: 400px;
+  background: $color-light;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+
+  .login-icon {
+    display: block;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 1.5rem;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 4px solid $color-light;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+h2 {
+  color: $color-primary;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+ion-list {
+  background: transparent;
+  --ion-background-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+ion-item {
+  --background: $color-light-gray-bg;
+  --border-radius: 8px;
+  --padding-start: 1rem;
+  --highlight-color-focused: $color-primary;
+  --border-color: transparent;
+  --inner-padding-bottom: 0.75rem;
+  --inner-padding-top: 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+ion-label[position="floating"] {
+  color: $color-primary;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+ion-input {
+  color: $color-dark;
+}
+
+ion-button[expand="block"] {
+  --background: $color-primary;
+  --background-activated: darken($color-primary, 10%);
+  --background-focused: darken($color-primary, 5%);
+  --border-radius: 8px;
+  --box-shadow: 0 4px 15px rgba(0, 90, 156, 0.3);
+  --padding-top: 1.2rem;
+  --padding-bottom: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 50px;
+  margin-top: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+
+  ion-spinner {
+    color: $color-light;
+  }
+}
+
+ion-button[fill="outline"] {
+  --border-color: $color-primary;
+  --color: $color-primary;
+  --border-radius: 8px;
+  --background-activated: rgba($color-primary, 0.1);
+  height: 50px;
+  font-weight: 600;
+  text-transform: none;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+ion-button[fill="clear"] {
+  color: $color-dark;
+  opacity: 0.7;
+  text-transform: none;
+  font-weight: 500;
+  --background-hover: transparent;
+  --background-activated: transparent;
+}
+
+.loading {
+  margin-top: 20px;
+  text-align: center;
+
+  p {
+    color: $color-dark;
+    font-size: 0.9rem;
+  }
+
+  ion-spinner {
+    color: $color-primary;
+  }
+}

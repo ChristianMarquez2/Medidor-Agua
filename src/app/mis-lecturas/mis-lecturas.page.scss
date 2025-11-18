@@ -1,0 +1,144 @@
+/*
+  ========================================
+  SCSS para la página de Mis Lecturas
+  Tema: Agua Potable (Profesional/Limpio)
+  ========================================
+*/
+
+/* --- Variables de Color (Tema Agua) --- */
+$color-primary: #005A9C; // Azul principal (corporativo)
+$color-secondary: #4DB8FF; // Celeste (agua, frescura)
+$color-dark: #222222; // Negro (para texto)
+$color-light: #FFFFFF; // Blanco (para tarjetas)
+$color-light-gray-bg: #f7f9fa; // Fondo de página (muy sutil)
+$color-gray-border: #e0e0e0;
+
+/* --- 1. Cabecera (Header) --- */
+ion-header {
+  // Sombra sutil en la cabecera
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  ion-toolbar {
+    --background: $color-primary;
+    --color: $color-light; // Color del texto del título
+  }
+
+  ion-title {
+    font-weight: 600;
+  }
+}
+
+/* --- 2. Fondo del Contenido --- */
+ion-content {
+  // Usamos un fondo gris claro para que las "tarjetas" resalten
+  --background: $color-light-gray-bg;
+}
+
+/* --- 3. Estados de Carga / Vacío --- */
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh; // Que ocupe buena parte de la pantalla
+
+  ion-spinner {
+    color: $color-primary;
+    // Hacemos el spinner un poco más grande
+    transform: scale(1.5);
+  }
+
+  p {
+    color: #666; // Un gris medio para el texto
+    font-size: 1rem;
+    margin-top: 1.5rem;
+  }
+}
+
+/* --- 4. Lista de Registros --- */
+ion-list {
+  // Quitamos el fondo de la lista para ver el fondo del content
+  background: transparent;
+  --ion-background-color: transparent;
+  // Añadimos padding para que las tarjetas no toquen los bordes
+  padding: 0.5rem 1rem;
+}
+
+/* --- 5. Tarjeta de Registro (ion-item) --- */
+ion-item {
+  --background: $color-light;
+  --border-color: transparent; // Sin líneas feas entre items
+  
+  /* MÁS ESPACIO: Aumentamos el padding interno de la tarjeta */
+  --padding-start: 1.25rem;
+  --inner-padding-end: 1.25rem;
+  --inner-padding-bottom: 1.25rem;
+  --inner-padding-top: 1.25rem;
+
+  border-radius: 12px; // Esquinas redondeadas de tarjeta
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // Sombra suave
+  margin-bottom: 1rem; // Espacio entre tarjetas
+}
+
+/* --- 6. Contenido de la Tarjeta (ion-label) --- */
+ion-label {
+  
+  /* Título principal de la tarjeta (Valor) */
+  h2 {
+    color: $color-primary;
+    font-size: 1.5rem;    // Más grande, es el dato principal
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Subtítulo (Fecha) */
+  p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0.35rem;
+  }
+
+  // Estilo para el enlace de "Ver ubicación"
+  p[style*="cursor:pointer"] {
+    color: var(--ion-color-primary, #3880ff) !important; // Usamos el azul de Ionic
+    font-weight: 600;
+    margin-top: 0.75rem;
+    text-decoration: none; // Más limpio sin subrayado
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline; // Subrayado solo al pasar el mouse
+    }
+  }
+}
+
+/* --- 7. Imágenes Adjuntas --- */
+/*
+  IMPORTANTE: Este estilo asume que has movido 
+  <div class="images">...</div> DENTRO del <ion-label>
+  en tu archivo HTML.
+*/
+.images {
+  display: grid;
+  grid-template-columns: 1fr 1fr; // Dos columnas iguales
+  gap: 0.75rem; // Espacio entre las imágenes
+  margin-top: 1rem;
+
+  ion-img {
+    border-radius: 8px;
+    overflow: hidden; // Asegura que la imagen respete las esquinas
+    border: 1px solid $color-gray-border;
+    width: 100%;
+    
+    /* ¡LA CLAVE ANTI-DISTORSIÓN! */
+    aspect-ratio: 16 / 9; // Proporción de 16:9
+
+    // Estilo para la imagen interna para que rellene el contenedor
+    &::part(image) {
+      object-fit: cover; // <-- Mantiene la foto sin estirar
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

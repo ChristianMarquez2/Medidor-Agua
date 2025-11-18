@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-bg">
+  <!-- Re-usamos el fondo y contenedor del login para consistencia -->
+  <div class="login-container">
+    <h2>Registro</h2>
+
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Correo</ion-label>
+        <ion-input
+          [(ngModel)]="email"
+          type="email"
+          inputmode="email"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input
+          [(ngModel)]="password"
+          type="password"
+          (keyup.enter)="register()"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button
+      expand="block"
+      (click)="register()"
+      [disabled]="loading"
+      class="ion-margin-top"
+    >
+      Crear cuenta
+    </ion-button>
+
+    <div *ngIf="loading" class="loading">
+      <ion-spinner></ion-spinner>
+      <p>Creando cuenta...</p>
+    </div>
+  </div>
+</ion-content>

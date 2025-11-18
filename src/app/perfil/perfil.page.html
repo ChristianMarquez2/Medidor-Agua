@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-icon name="person-circle-outline" class="profile-icon"></ion-icon>
+
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-label>
+          <p>Conectado como:</p>
+          <h3>{{ userEmail }}</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button
+      (click)="signOut()"
+      expand="block"
+      color="danger"
+      class="ion-padding"
+    >
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </div>
+</ion-content>
